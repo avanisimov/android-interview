@@ -9,9 +9,11 @@ class NetworkDataGetter {
 
     fun getData(callback: Callback) {
         println("Getting network data...")
-        Thread.sleep(1000)
-        println("Got network data...")
-        callback.onDataGot("Some data")
+        Thread {
+            Thread.sleep(1000)
+            println("Got network data...")
+            callback.onDataGot("Some data")
+        }.start()
     }
 
     interface Callback {
